@@ -1,54 +1,50 @@
 <template>
-    <div
-            :class="
-      `q-tree__node q-tree__node--link ${
-        hasChildren ? '' : 'q-treeview-node--leaf'
-      }`
-    "
-    >
-        <div class="row q-treeview-node__root" @click="open = !open">
-            <q-icon size="sm" v-if="hasChildren" name="arrow_right"
-                    :class="open?'text-grey-8 q-tree__arrow--rotate':'text-grey-8'"/>
-            <slot name="left" v-bind="{ item: value, open }"/>
-            <slot v-if="hasDefaultSlot" name="body" v-bind="{ item: value, open }"/>
-            <div v-if="!hasDefaultSlot" class="q-tree__node-header-content q-pa-xs">
-                {{value.label}}
-            </div>
-        </div>
-        <div
-                v-if="open"
-                class="q-tree__children"
-        >
-            <draggable
-                    :value="value.children"
-                    ghost-class="ghost"
-                    @input="updateValue"
-                    :group="group"
-                    v-bind="dragOptions"
-                    @start="drag = true"
-                    @end="drag = false"
-            >
-                <transition-group type="transition" :name="!drag ? 'flip-list' : null">
-                    <q-draggable-tree-node
-                            v-for="item,index in value.children"
-                            :key="index"
-                            :value="item"
-                            @input="updateChildValue"
-                            :group="group"
-                            :rowKey="rowKey"
-                    >
-                        <template v-slot:left="{ item, open }">
-                            <slot name="left" v-bind="{ item, open }"></slot>
-                        </template>
-                        <template v-if="hasDefaultSlot" v-slot:body="{ item, open }">
-                            <slot name="body" v-bind="{ item, open }"></slot>
-                        </template>
-                        <span v-if="!hasDefaultSlot">{{item.label}}</span>
-                    </q-draggable-tree-node>
-                </transition-group>
-            </draggable>
-        </div>
+  <div style="padding: 7px;border-radius: 3px;"
+       :class="hasChildren?'q-tree__node--link':'q-tree__node--link q-treeview-node--leaf'"
+  >
+    <div class="row q-treeview-node__root" @click="open = !open">
+      <q-icon size="sm" v-if="hasChildren" name="arrow_right"
+              :class="open?'text-grey-8 q-tree__arrow--rotate':'text-grey-8'"/>
+      <slot name="left" v-bind="{ item: value, open }"/>
+      <slot v-if="hasDefaultSlot" name="body" v-bind="{ item: value, open }"/>
+      <div v-if="!hasDefaultSlot" class="q-tree__node-header-content q-pa-xs">
+        {{value.label}}
+      </div>
     </div>
+    <div
+      v-if="open"
+      class="q-tree__children"
+    >
+      <draggable
+        :value="value.children"
+        ghost-class="ghost"
+        @input="updateValue"
+        :group="group"
+        v-bind="dragOptions"
+        @start="drag = true"
+        @end="drag = false"
+      >
+        <transition-group type="transition" :name="!drag ? 'flip-list' : null">
+          <q-draggable-tree-node
+            v-for="item,index in value.children"
+            :key="index"
+            :value="item"
+            @input="updateChildValue"
+            :group="group"
+            :rowKey="rowKey"
+          >
+            <template v-slot:left="{ item, open }">
+              <slot name="left" v-bind="{ item, open }"></slot>
+            </template>
+            <template v-if="hasDefaultSlot" v-slot:body="{ item, open }">
+              <slot name="body" v-bind="{ item, open }"></slot>
+            </template>
+            <span v-if="!hasDefaultSlot">{{item.label}}</span>
+          </q-draggable-tree-node>
+        </transition-group>
+      </draggable>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -129,29 +125,29 @@
 
 </script>
 
-<style>
-    .flip-list-move {
-        transition: transform 0.5s;
-    }
+<style scoped>
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
 
-    .no-move {
-        transition: transform 0s;
-    }
+  .no-move {
+    transition: transform 0s;
+  }
 
-    .ghost {
-        opacity: 0.5;
-        background: #c8ebfb;
-    }
+  .ghost {
+    opacity: 0.5;
+    background: lightgray;
+  }
 
-    .list-group {
-        min-height: 20px;
-    }
+  .list-group {
+    min-height: 20px;
+  }
 
-    .list-group-item {
-        cursor: move;
-    }
+  .list-group-item {
+    cursor: move;
+  }
 
-    .list-group-item i {
-        cursor: pointer;
-    }
+  .list-group-item i {
+    cursor: pointer;
+  }
 </style>

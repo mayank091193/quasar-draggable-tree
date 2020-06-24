@@ -1,37 +1,37 @@
 <template>
-    <div class="q-pa-md q-gutter-sm">
+  <div class="q-pa-md q-gutter-sm">
 
-        <draggable
-                :value="localValue"
-                :group="group"
-                v-model="treeData"
-                class="q-tree q-tree-draggable"
-                ghost-class="ghost"
-                @input="updateValue"
-                v-bind="dragOptions"
-                @start="drag = true"
-                @end="drag = false"
+    <draggable
+      :value="localValue"
+      :group="group"
+      v-model="treeData"
+      class="q-tree q-tree-draggable"
+      ghost-class="ghost"
+      @input="updateValue"
+      v-bind="dragOptions"
+      @start="drag = true"
+      @end="drag = false"
+    >
+      <transition-group type="transition" :name="!drag ? 'flip-list' : null">
+        <q-draggable-tree-node
+          v-for="item, index in treeData"
+          :key="index"
+          :value="item"
+          :group="group"
+          @input="updateItem"
+          :rowKey="rowKey"
         >
-            <transition-group type="transition" :name="!drag ? 'flip-list' : null">
-                <q-draggable-tree-node
-                        v-for="item, index in treeData"
-                        :key="index"
-                        :value="item"
-                        :group="group"
-                        @input="updateItem"
-                        :rowKey="rowKey"
-                >
-                    <template v-slot:left="{ item, open }">
-                        <slot name="left" v-bind="{ item, open }"></slot>
-                    </template>
-                    <template v-if="hasDefaultSlot" v-slot:body="{ item, open }">
-                        <slot name="body" v-bind="{ item, open }"></slot>
-                    </template>
-                    <span v-if="!hasDefaultSlot">{{item}}</span>
-                </q-draggable-tree-node>
-            </transition-group>
-        </draggable>
-    </div>
+          <template v-slot:left="{ item, open }">
+            <slot name="left" v-bind="{ item, open }"></slot>
+          </template>
+          <template v-if="hasDefaultSlot" v-slot:body="{ item, open }">
+            <slot name="body" v-bind="{ item, open }"></slot>
+          </template>
+          <span v-if="!hasDefaultSlot">{{item}}</span>
+        </q-draggable-tree-node>
+      </transition-group>
+    </draggable>
+  </div>
 </template>
 
 <script>
@@ -109,33 +109,30 @@
 
 </script>
 
-<style>
-    .q-tree__node:after {
-        border-left: none !important;
-    }
+<style scoped>
 
-    .flip-list-move {
-        transition: transform 0.5s;
-    }
+  .flip-list-move {
+    transition: transform 0.5s;
+  }
 
-    .no-move {
-        transition: transform 0s;
-    }
+  .no-move {
+    transition: transform 0s;
+  }
 
-    .ghost {
-        opacity: 0.5;
-        background: #c8ebfb;
-    }
+  .ghost {
+    opacity: 0.5;
+    background: lightgray;
+  }
 
-    .list-group {
-        min-height: 20px;
-    }
+  .list-group {
+    min-height: 20px;
+  }
 
-    .list-group-item {
-        cursor: move;
-    }
+  .list-group-item {
+    cursor: move;
+  }
 
-    .list-group-item i {
-        cursor: pointer;
-    }
+  .list-group-item i {
+    cursor: pointer;
+  }
 </style>
