@@ -1,18 +1,16 @@
 <template>
   <div class="q-pa-md q-gutter-sm">
 
-    <draggable
-      :value="localValue"
-      :group="group"
-      v-model="treeData"
-      class="q-tree q-tree-draggable"
-      ghost-class="ghost"
-      @input="updateValue"
-      v-bind="dragOptions"
-      @start="drag = true"
-      @end="drag = false"
-    >
-      <transition-group type="transition" :name="!drag ? 'flip-list' : null">
+<!--    <draggable-->
+<!--      :value="localValue"-->
+<!--      :group="group"-->
+<!--      v-model="treeData"-->
+<!--      class="q-tree q-tree-draggable"-->
+<!--      ghost-class="ghost"-->
+<!--      @input="updateValue"-->
+<!--      @start="drag = true"-->
+<!--      @end="drag = false"-->
+<!--    >-->
         <q-draggable-tree-node
           v-for="item, index in treeData"
           :key="index"
@@ -29,8 +27,7 @@
           </template>
           <span v-if="!hasDefaultSlot">{{item}}</span>
         </q-draggable-tree-node>
-      </transition-group>
-    </draggable>
+<!--    </draggable>-->
   </div>
 </template>
 
@@ -84,6 +81,7 @@
                 return {
                     animation: 200,
                     group: "description",
+                    emptyInsertThreshold: 10,
                     disabled: false,
                     ghostClass: "ghost"
                 };
@@ -110,14 +108,6 @@
 </script>
 
 <style scoped>
-
-  .flip-list-move {
-    transition: transform 0.5s;
-  }
-
-  .no-move {
-    transition: transform 0s;
-  }
 
   .ghost {
     opacity: 0.5;

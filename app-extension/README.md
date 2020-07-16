@@ -10,6 +10,8 @@ To add this App Extension to your Quasar application, run the following (in your
 quasar ext add qdraggabletree
 ```
 
+### After version 0.0.4, it is mandatory to have ```children``` object (Ex. ```children: []```) even if the item has no children present.
+
 # Uninstall
 To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
 
@@ -33,10 +35,12 @@ quasar ext remove qdraggabletree
                             {
                                 id: 3,
                                 label: 'Quality ingredients',
+                                children: [],
                             },
                             {
                                 id: 4,
                                 label: 'Good recipe',
+                                children: [],
                             }
                         ]
                     },
@@ -44,22 +48,34 @@ quasar ext remove qdraggabletree
                         id: 5,
                         label: 'Good service',
                         children: [
-                            {id: 6, label: 'Prompt attention'},
-                            {id: 7, label: 'Professional waiter'}
+                            {id: 6, label: 'Prompt attention', children: [],},
+                            {id: 7, label: 'Professional waiter', children: [],},
                         ]
                     },
                     {
                         id: 8,
                         label: 'Pleasant surroundings',
                         children: [
-                            {id: 9, label: 'Happy atmosphere'},
-                            {id: 10, label: 'Good table presentation'},
-                            {id: 11, label: 'Pleasing decor'}
+                            {id: 9, label: 'Happy atmosphere', children: [],},
+                            {id: 10, label: 'Good table presentation', children: [],},
+                            {id: 11, label: 'Pleasing decor', children: [],}
                         ]
                     }
                 ]
             }
         ]
+
+# Support
+
+If this helped you, you can contribute to this project by supporting me:
+
+### [💜 Support my open-source work on GitHub](https://github.com/sponsors/mayank091193)
+
+Please check out my sponsor page.
+
+(GitHub currently **doubles your support**! So if you support me with $5/mo, I will get $10 instead! 😉)
+
+Thank you very much!!
 
 # Source
 

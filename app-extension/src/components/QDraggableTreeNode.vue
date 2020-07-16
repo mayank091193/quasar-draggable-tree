@@ -1,8 +1,8 @@
 <template>
-  <div style="padding: 7px;border-radius: 3px;"
+  <div style="border-radius: 3px;"
        :class="hasChildren?'q-tree__node--link':'q-tree__node--link q-treeview-node--leaf'"
   >
-    <div class="row q-treeview-node__root" @click="open = !open">
+    <div style="padding-top: 6px;" class="row q-treeview-node__root" @click="open = !open">
       <q-icon size="sm" v-if="hasChildren" name="arrow_right"
               :class="open?'text-grey-8 q-tree__arrow--rotate':'text-grey-8'"/>
       <slot name="left" v-bind="{ item: value, open }"/>
@@ -12,8 +12,9 @@
       </div>
     </div>
     <div
-      v-if="open"
+      v-if="open && value.children.length > 0"
       class="q-tree__children"
+      style="padding-top: 6px"
     >
       <draggable
         :value="value.children"
@@ -24,7 +25,6 @@
         @start="drag = true"
         @end="drag = false"
       >
-        <transition-group type="transition" :name="!drag ? 'flip-list' : null">
           <q-draggable-tree-node
             v-for="item,index in value.children"
             :key="index"
@@ -41,8 +41,19 @@
             </template>
             <span v-if="!hasDefaultSlot">{{item.label}}</span>
           </q-draggable-tree-node>
-        </transition-group>
       </draggable>
+    </div>
+    <div v-else class="q-tree__children">
+      <draggable
+        :value="value.children"
+        ghost-class="ghost"
+        @input="updateValue"
+        :group="group"
+        class="dragArea"
+        v-bind="dragOptions"
+        @start="drag = true"
+        @end="drag = false"
+      ></draggable>
     </div>
   </div>
 </template>
@@ -79,7 +90,7 @@
         },
         data() {
             return {
-                open: false,
+                open: true,
                 drag: false,
                 localValue: Object.assign({}, this.value)
             };
@@ -98,6 +109,7 @@
                 return {
                     animation: 200,
                     group: "description",
+                    emptyInsertThreshold: 10,
                     disabled: false,
                     ghostClass: "ghost"
                 };
@@ -110,9 +122,10 @@
         },
         methods: {
             updateValue(value) {
-                if (value.constructor == Array) {
+                if (value.constructor === Array) {
                     this.localValue.children = [...value];
                     this.$emit("input", this.localValue);
+                    this.open=true;
                 }
             },
             updateChildValue(value) {
@@ -126,13 +139,6 @@
 </script>
 
 <style scoped>
-  .flip-list-move {
-    transition: transform 0.5s;
-  }
-
-  .no-move {
-    transition: transform 0s;
-  }
 
   .ghost {
     opacity: 0.5;
@@ -149,5 +155,9 @@
 
   .list-group-item i {
     cursor: pointer;
+  }
+
+  .dragArea {
+    min-height: 11px;
   }
 </style>

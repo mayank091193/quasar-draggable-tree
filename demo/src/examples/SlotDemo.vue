@@ -58,10 +58,12 @@
                                     {
                                         id: 3,
                                         label: 'Quality ingredients',
+                                        children: []
                                     },
                                     {
                                         id: 4,
                                         label: 'Good recipe',
+                                        children: []
                                     }
                                 ]
                             },
@@ -70,8 +72,8 @@
                                 label: 'Good service',
                                 icon: 'room_service',
                                 children: [
-                                    {id: 6, label: 'Prompt attention'},
-                                    {id: 7, label: 'Professional waiter'}
+                                    {id: 6, label: 'Prompt attention',children: []},
+                                    {id: 7, label: 'Professional waiter',children: []}
                                 ]
                             },
                             {
@@ -79,9 +81,9 @@
                                 label: 'Pleasant surroundings',
                                 icon: 'photo',
                                 children: [
-                                    {id: 9, label: 'Happy atmosphere'},
-                                    {id: 10, label: 'Good table presentation'},
-                                    {id: 11, label: 'Pleasing decor'}
+                                    {id: 9, label: 'Happy atmosphere',children: []},
+                                    {id: 10, label: 'Good table presentation',children: []},
+                                    {id: 11, label: 'Pleasing decor',children: []}
                                 ]
                             }
                         ]
