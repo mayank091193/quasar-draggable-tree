@@ -14,6 +14,8 @@ Please check out my sponsor page.
 
 Thank you very much!!
 
+### NPM Package: https://www.npmjs.com/package/quasar-app-extension-qdraggabletree
+
 ## Install
 
 To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
