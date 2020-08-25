@@ -21,7 +21,7 @@ module.exports = function (api) {
   api.registerDescribeApi('', './components/QDraggableTree.json')
 
   api.compatibleWith('quasar', '^1.5.11')
-  api.compatibleWith('@quasar/app', '^1.4.3')
+  api.compatibleWith('@quasar/app', '^1.4.3 || ^2.0.0')
 
   api.extendQuasarConf(extendWithComponent)
 };

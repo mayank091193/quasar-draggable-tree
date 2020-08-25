@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-qdraggabletree",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "QDraggableTree is a component that displays hierarchical data with drag and drop ability.",
   "author": "mayank091193@gmail.com",
   "license": "MIT",
