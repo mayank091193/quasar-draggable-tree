@@ -1,4 +1,4 @@
-import QDraggableTree from 'components/QDraggableTree'
+import QDraggableTree from './components/QDraggableTree'
 
 import pkg from '../package.json'
 const { version } = pkg

@@ -13,9 +13,11 @@
     "axios": "^0.21.2",
     "core-js": "^3.6.5",
     "quasar": "^2.0.0",
-    "quasar-app-extension-qdraggabletree2": "file:../app-extension",
+    "quasar-app-extension-qdraggabletree": "file:../app-extension",
     "quasar-ui-example-viewer": "^2.0.0-alpha.6",
     "quasar-ui-json-api-viewer": "^2.0.0-alpha.6",
+    "vue": "^3.2.31",
+    "vue-router": "^4.0.14",
     "vue3-markdown-it": "^1.0.8"
   },
   "devDependencies": {

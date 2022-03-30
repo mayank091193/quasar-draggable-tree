@@ -1,8 +1,8 @@
 {
   "name": "quasar-ui-qdraggabletree",
-  "version": "0.0.1-beta",
-  "author": "pratikpatelpp802@gmail.com",
-  "description": "My awesome component",
+  "version": "1.0.1",
+  "author": "mayank091193@gmail.com",
+  "description": "Quasar Draggable Tree with Vue 3!",
   "license": "MIT",
   "module": "dist/index.esm.js",
   "main": "dist/index.common.js",

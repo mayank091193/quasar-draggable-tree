@@ -8,10 +8,10 @@
 
 function extendConf (conf) {
   // register our boot file
-  conf.boot.push('~quasar-app-extension-qdraggabletree2/src/boot/register.js')
+  conf.boot.push('~quasar-app-extension-qdraggabletree/src/boot/register.js')
 
   // make sure app extension files & ui package gets transpiled
-  conf.build.transpileDependencies.push(/quasar-app-extension-qdraggabletree2[\\/]src/)
+  conf.build.transpileDependencies.push(/quasar-app-extension-qdraggabletree[\\/]src/)
 }
 
 module.exports = function (api) {

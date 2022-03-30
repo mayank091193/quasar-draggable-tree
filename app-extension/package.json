@@ -1,8 +1,8 @@
 {
   "name": "quasar-app-extension-qdraggabletree",
-  "version": "0.0.5-beta",
+  "version": "2.0.4",
   "description": "A Quasar App Extension",
-  "author": "pratikpatelpp802@gmail.com",
+  "author": "mayank091193@gmail.com",
   "license": "MIT",
   "main": "src/index.js",
   "repository": {

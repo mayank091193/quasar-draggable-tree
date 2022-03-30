@@ -1,7 +1,7 @@
 # Component qdraggabletree
 
-[![npm](https://img.shields.io/npm/v/quasar-ui-ui.svg?label=quasar-ui-ui)](https://www.npmjs.com/package/quasar-ui-ui)
-[![npm](https://img.shields.io/npm/dt/quasar-ui-ui.svg)](https://www.npmjs.com/package/quasar-ui-ui)
+[![npm](https://img.shields.io/npm/v/quasar-ui-qdraggabletree.svg?label=quasar-ui-qdraggabletree)](https://www.npmjs.com/package/quasar-ui-qdraggabletree)
+[![npm](https://img.shields.io/npm/dt/quasar-ui-qdraggabletree.svg)](https://www.npmjs.com/package/quasar-ui-qdraggabletree)
 
 **Compatible with Quasar UI v2 and Vue 3**.
 
@@ -21,7 +21,7 @@ Create and register a boot file:
 
 ```js
 import Vue from 'vue'
-import Plugin from 'quasar-ui-ui'
+import Plugin from 'quasar-ui-qdraggabletree'
 
 Vue.use(Plugin)
 ```
@@ -30,7 +30,7 @@ Vue.use(Plugin)
 
 ```html
 <script>
-import { Component as qdraggabletree } from 'quasar-ui-ui'
+import { Component as qdraggabletree } from 'quasar-ui-qdraggabletree'
 
 export default {
   components: {
@@ -44,7 +44,7 @@ export default {
 
 ```js
 import Vue from 'vue'
-import Plugin from 'quasar-ui-ui'
+import Plugin from 'quasar-ui-qdraggabletree'
 
 Vue.use(Plugin)
 ```
@@ -53,7 +53,7 @@ Vue.use(Plugin)
 
 ```html
 <script>
-import { Component as qdraggabletree } from 'quasar-ui-ui'
+import { Component as qdraggabletree } from 'quasar-ui-qdraggabletree'
 
 export default {
   components: {
@@ -72,7 +72,7 @@ Add the following tag(s) after the Quasar ones:
 ```html
 <body>
   <!-- at end of body, AFTER Quasar script(s): -->
-  <script src="https://cdn.jsdelivr.net/npm/quasar-ui-ui/dist/index.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/quasar-ui-qdraggabletree/dist/index.umd.min.js"></script>
 </body>
 ```
 
@@ -117,4 +117,4 @@ If you have a component that has assets, like language or icon-sets, you will ne
 If you appreciate the work that went into this, please consider [donating to Quasar](https://donate.quasar.dev).
 
 # License
-MIT (c) pratikpatelpp802@gmail.com
+MIT (c) mayank091193@gmail.com
