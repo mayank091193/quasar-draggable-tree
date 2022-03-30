@@ -2,21 +2,21 @@
 const routes = [
   {
     path: '/',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/MainLayout.vue'),
     children: [
-      { path: '',  redirect: '/docs' },
-      { path: '/docs', component: () => import('pages/Index.vue') },
-      { path: '/examples', component: () => import('pages/Examples.vue') }
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: '/example-qdraggabletree-basic', component: () => import('pages/BasicExample') },
+      { path: '/example-qdraggabletree-slot-demo', component: () => import('pages/SlotDemoExample') },
+      { path: '/sponsor', component: () => import('pages/Sponsor') }
     ]
+  },
+
+  // Always leave this as last one,
+  // but you can also remove it
+  {
+    path: '/:catchAll(.*)*',
+    component: () => import('pages/Error404.vue')
   }
 ]
-
-// Always leave this as last one
-if (process.env.MODE !== 'ssr') {
-  routes.push({
-    path: '*',
-    component: () => import('pages/Error404.vue')
-  })
-}
 
 export default routes

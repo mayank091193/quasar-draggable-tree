@@ -1,99 +1,33 @@
-# QDraggableTree
+# Quasar App Extension ui
 
-QDraggableTree is a [Quasar App Extension](https://quasar.dev/app-extensions/introduction).  It is a component that displays hierarchical data with drag and drop ability.
+> Add a short description of your App Extension. What does it do? How is it beneficial? Why would someone want to use it?
 
-## Install
+[![npm](https://img.shields.io/npm/v/quasar-app-extension-ui.svg?label=quasar-app-extension-ui)](https://www.npmjs.com/package/quasar-app-extension-ui)
+[![npm](https://img.shields.io/npm/dt/quasar-app-extension-ui.svg)](https://www.npmjs.com/package/quasar-app-extension-ui)
 
-To add this App Extension to your Quasar application, run the following (in your Quasar app folder):
-
+# Install
 ```bash
-quasar ext add qdraggabletree
+quasar ext add ui
 ```
+Quasar CLI will retrieve it from NPM and install the extension.
 
-### After version 0.0.4, it is mandatory to have ```children``` object (Ex. ```children: []```) even if the item has no children present.
+## Prompts
+
+> If your app extension uses prompts, explain them here, otherwise remove this section and remove prompts.js file.
 
 # Uninstall
-To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):
-
-```
-quasar ext remove qdraggabletree
+```bash
+quasar ext remove ui
 ```
 
-# Defining the data
+# Info
+> Add longer information here that will help the user of your app extension.
 
+# Other Info
+> Add other information that's not as important to know
 
-    
-        [
-            {
-                id: 1,
-                label: 'Satisfied customers',
-                children: [
-                    {
-                        id: 2,
-                        label: 'Good food',
-                        children: [
-                            {
-                                id: 3,
-                                label: 'Quality ingredients',
-                                children: [],
-                            },
-                            {
-                                id: 4,
-                                label: 'Good recipe',
-                                children: [],
-                            }
-                        ]
-                    },
-                    {
-                        id: 5,
-                        label: 'Good service',
-                        children: [
-                            {id: 6, label: 'Prompt attention', children: [],},
-                            {id: 7, label: 'Professional waiter', children: [],},
-                        ]
-                    },
-                    {
-                        id: 8,
-                        label: 'Pleasant surroundings',
-                        children: [
-                            {id: 9, label: 'Happy atmosphere', children: [],},
-                            {id: 10, label: 'Good table presentation', children: [],},
-                            {id: 11, label: 'Pleasing decor', children: [],}
-                        ]
-                    }
-                ]
-            }
-        ]
+# Donate
+If you appreciate the work that went into this App Extension, please consider [donating to Quasar](https://donate.quasar.dev).
 
-# Support
-
-If this helped you, you can contribute to this project by supporting me:
-
-### [💜 Support my open-source work on GitHub](https://github.com/sponsors/mayank091193)
-
-Please check out my sponsor page.
-
-(GitHub currently **doubles your support**! So if you support me with $5/mo, I will get $10 instead! 😉)
-
-Thank you very much!!
-
-# Source
-
-can be found [here](https://github.com/mayank091193/quasar-draggable-tree).
-
-# Docs
-
-can be found [here](https://quasar-draggable-tree.netlify.com).
-
-# Examples
-
-can be found [here](https://quasar-draggable-tree.netlify.com/examples).
-
-# Demo Project.
-
-can be found [here](https://github.com/mayank091193/quasar-draggable-tree/tree/master/demo).
-
-
-# Roadmap
-
-Default Expansion
+# License
+MIT (c) pratikpatelpp802@gmail.com
