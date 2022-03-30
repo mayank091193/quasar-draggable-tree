@@ -16,12 +16,13 @@
         </q-card-section>
       </q-card>
 
-      <vue3-markdown-it :source='source' class="q-px-md"/>
+
+      <q-markdown>{{ source }}</q-markdown>
 
       <json-api-viewer
-        title="QHierarchy API"
+        title="QDraggableTree API"
         :json="json"
-        starting-tab="general"
+        starting-tab="General"
         no-menu
       />
 
@@ -31,9 +32,10 @@
 </template>
 
 <script>
-import {defineComponent, ref , defineAsyncComponent} from 'vue';
+import {defineComponent, ref, defineAsyncComponent} from 'vue';
 import {useRoute} from 'vue-router'
 import MarkdownLink from "components/MarkdownLink";
+import markdown from './qdraggabletree.md'
 
 import {
   mdiCharity
@@ -43,272 +45,127 @@ import 'highlight.js/styles/monokai.css';
 
 const year = (new Date()).getFullYear()
 
-const columns = [
-  {
-    name: 'label',
-    label: 'Label',
-    align: 'left',
-    field: 'label',
-    // (optional) tell QHierarchy you want this column sortable
-    sortable: true
-  },
-  {
-    name: 'Description',
-    label: 'Description',
-    sortable: true,
-    field: 'description',
-    align: 'center'
-  },
-  {
-    name: 'note',
-    label: 'Note',
-    sortable: true,
-    field: 'note',
-    align: 'left'
-  }
-];
-const data = [
-  {
-    label: "Node 1",
-    description: "Node 1 description",
-    note: "Node 1 note",
-    // id: 1,
-    children: [
-      {
-        label: "Node 1.1",
-        description: "Node 1.1 description",
-        note: "Node 1.1 note",
-        // id: 2
-      },
-      {
-        label: "Node 1.2",
-        description: "Node 1.2 description",
-        note: "Node 1.2 note",
-        // id: 3,
-        children: [
-          {
-            label: "Node 1.2.1",
-            description: "Node 1.2.1 description",
-            note: "Node 1.2.1 note",
-            // id: 4
-          },
-          {
-            label: "Node 1.2.2",
-            description: "Node 1.2.2 description",
-            note: "Node 1.2.2 note",
-            // id: 5
-          }
-        ],
-      }
-    ],
-  },
-  {
-    label: "Node 2",
-    description: "Node 2 description",
-    note: "Node 2 note",
-    // id: 6,
-    children: [
-      {
-        label: "Node 2.1",
-        description: "Node 2.1 description",
-        note: "Node 2.1 note",
-        // id: 7,
-        children: [
-          {
-            label: "Node 2.1.1",
-            description: "Node 2.1.1 description",
-            note: "Node 2.1.1 note",
-            // id: 8
-          },
-          {
-            label: "Node 2.1.2",
-            description: "Node 2.1.2 description",
-            note: "Node 2.1.2 note",
-            // id: 9
-          }
-        ],
-      },
-      {
-        label: "Node 2.2",
-        description: "Node 2.2 description",
-        note: "Node 2.2 note",
-        // id: 10
-      }
-    ],
-  }
-];
 const json = {
-
-  "general": {
+  "props": {
+    "rowKey": {
+      "type": "string",
+      "category": "general",
+      "desc": "Property of each row that defines the unique key of each row (the result must be a primitive, not Object, Array, etc); The value of property must be string.",
+      "examples": [":rowKey=\"id\""],
+    },
+    "group": {
+      "type": "string",
+      "category": "general",
+      "desc": "group name for vuedraggable. If this props not provided, drag and drop will be enabled only in children.",
+      "examples": [":group=\"name\""],
+    },
+  },
+  "slots": {
+    "left": {
+      "extends": "default",
+      "desc": "Slot to define the left section which may include avatar, icon, etc."
+    },
+    "body": {
+      "extends": "default",
+      "desc": "Slot to define the body which will be the main part to display labels."
+    }
+  },
+  "General": {
     "data": {
       "type": "Array",
       "desc": "Rows of data to display",
-      "examples": [":data=\"myData\""],
+      "examples": [":data=\"treeData\""],
     },
-    "columns": {
-      "type": "Array",
-      "desc": "The column definitions (Array of Objects)\n",
-      "examples": [":columns=\"tableColumns\""],
-    }
-  },
-  "props": {
-    "dense": {
-      "extends": "dense",
-      "type": "boolean",
-      "desc": "Dense mode; occupies less space",
-      "category": "style"
-    },
-    "dark": {
-      "extends": "dark",
-      "type": "boolean",
-      "desc": "Notify the component that the background is a dark color",
-      "category": "style"
-    },
-    "default-expand-all": {
-      "extends": "dark",
-      "type": "boolean",
-      "desc": "Allow the QHierarchy to have all it's nodes expanded, when first rendered",
-      "category": "behaviour"
-    },
-    "flat": {
-      "extends": "flat",
-      "type": "boolean",
-      "desc": "Applies a 'flat' design (no default shadow)",
-      "category": "style"
-    },
-    "bordered": {
-      "extends": "bordered",
-      "type": "boolean",
-      "desc": "Applies a default border to the component",
-      "category": "style"
-    },
-    "square": {
-      "extends": "square",
-      "type": "boolean",
-      "desc": "Removes border-radius so borders are squared",
-      "category": "style"
-    },
-    "separator": {
-      "type": "String",
-      "desc": "Use a separator/border between rows, columns or all cells",
-      "default": "horizontal",
-      "values": ["horizontal", "vertical", "cell", "none"],
-      "examples": ["cell"],
-      "category": "content"
-    }
-  },
-  "slots": {
-    "body": {
-      "extends": "default",
-      "desc": "Slot to define how a body row looks like; Suggestion: tr + td"
-    }
-  },
+  }
 }
 import md from "markdown-it";
 
-let mds_data = "#### QHierarchy\n" +
+let mds_data = "# QDraggableTree\n" +
   "\n" +
-  "QHierarchy is a [Quasar App Extension](https://quasar.dev/app-extensions/introduction).  It allows you to display data in hierarchy structure on your page.\n" +
+  "QDraggableTree is a [Quasar App Extension](https://quasar.dev/app-extensions/introduction). It is a component that displays hierarchical data \n" +
   "\n" +
-  "###### Install\n" +
+  "with drag and drop ability.\n" +
+  "\n" +
+  "## Install\n" +
+  "\n" +
   "To add this App Extension to your Quasar application, run the following (in your Quasar app folder):\n" +
   "\n" +
   "```bash\n" +
-  "quasar ext add qhierarchy\n" +
+  "quasar ext add qdraggabletree\n" +
   "```\n" +
-  "###### Uninstall \n" +
+  "\n" +
+  "# Uninstall\n" +
   "To remove this App Extension from your Quasar application, run the following (in your Quasar app folder):\n" +
   "\n" +
   "```\n" +
-  "quasar ext remove qhierarchy\n" +
+  "quasar ext remove qdraggabletree\n" +
   "```\n" +
   "\n" +
-  "#### Defining the columns\n" +
+  "# Defining the data\n" +
   "\n" +
   "\n" +
-  "    [\n" +
-  "        {\n" +
-  "            name: 'label',\n" +
-  "            label: 'Label',\n" +
-  "            align: 'left',\n" +
-  "            field: 'label',\n" +
-  "            // (optional) tell QHierarchy you want this column sortable\n" +
-  "            sortable: true\n" +
-  "        },\n" +
-  "        {\n" +
-  "            name: 'Description',\n" +
-  "            label: 'Description',\n" +
-  "            sortable: true,\n" +
-  "            field: 'description',\n" +
-  "            align: 'center',\n" +
-  "        },\n" +
-  "        {\n" +
-  "            name: 'note',\n" +
-  "            label: 'Note',\n" +
-  "            sortable: true,\n" +
-  "            field: 'note',\n" +
-  "            align: 'left',\n" +
-  "        }\n" +
-  "    ],\n" +
-  "\n" +
-  "#### Defining Data\n" +
-  "\n" +
-  "     [\n" +
+  "    \n" +
+  "        [\n" +
   "            {\n" +
-  "                label: \"Node 1\",\n" +
-  "                description: \"Node 1 description\",\n" +
-  "                note: \"Node 1 note\",\n" +
+  "                id: 1,\n" +
+  "                label: 'Satisfied customers',\n" +
   "                children: [\n" +
   "                    {\n" +
-  "                        label: \"Node 1.1\",\n" +
-  "                        description: \"Node 1.1 description\",\n" +
-  "                        note: \"Node 1.1 note\",\n" +
-  "                    },\n" +
-  "                    {\n" +
-  "                        label: \"Node 1.2\",\n" +
-  "                        description: \"Node 1.2 description\",\n" +
-  "                        note: \"Node 1.2 note\",\n" +
+  "                        id: 2,\n" +
+  "                        label: 'Good food',\n" +
   "                        children: [\n" +
   "                            {\n" +
-  "                                label: \"Node 1.2.1\",\n" +
-  "                                description: \"Node 1.2.1 description\",\n" +
-  "                                note: \"Node 1.2.1 note\",\n" +
+  "                                id: 3,\n" +
+  "                                label: 'Quality ingredients',\n" +
+  "                                children: [],\n" +
   "                            },\n" +
   "                            {\n" +
-  "                                label: \"Node 1.2.2\",\n" +
-  "                                description: \"Node 1.2.2 description\",\n" +
-  "                                note: \"Node 1.2.2 note\",\n" +
+  "                                id: 4,\n" +
+  "                                label: 'Good recipe',\n" +
+  "                                children: [],\n" +
   "                            }\n" +
-  "                        ],\n" +
+  "                        ]\n" +
+  "                    },\n" +
+  "                    {\n" +
+  "                        id: 5,\n" +
+  "                        label: 'Good service',\n" +
+  "                        children: [\n" +
+  "                            {id: 6, label: 'Prompt attention', children: [],},\n" +
+  "                            {id: 7, label: 'Professional waiter', children: [],},\n" +
+  "                        ]\n" +
+  "                    },\n" +
+  "                    {\n" +
+  "                        id: 8,\n" +
+  "                        label: 'Pleasant surroundings',\n" +
+  "                        children: [\n" +
+  "                            {id: 9, label: 'Happy atmosphere', children: [],},\n" +
+  "                            {id: 10, label: 'Good table presentation', children: [],},\n" +
+  "                            {id: 11, label: 'Pleasing decor', children: [],}\n" +
+  "                        ]\n" +
   "                    }\n" +
-  "                ],\n" +
-  "        }\n" +
-  "     ]\n" +
+  "                ]\n" +
+  "            }\n" +
+  "        ]\n" +
   "\n" +
-  "#### Source\n" +
+  "# Source\n" +
   "\n" +
-  "can be found [here](https://github.com/pratik227/quasar-qhierarchy).\n" +
+  "can be found [here](https://github.com/mayank091193/quasar-draggable-tree).\n" +
   "\n" +
-  "#### Docs\n" +
+  "# Docs\n" +
   "\n" +
-  "can be found [here](https://quasar-qhierarchy.netlify.com).\n" +
+  "can be found [here](https://quasar-draggable-tree.netlify.com).\n" +
   "\n" +
-  "#### Examples\n" +
-  "can be found [here](https://quasar-qhierarchy.netlify.com/examples).\n" +
+  "# Examples\n" +
   "\n" +
-  "#### Demo (source) Project.\n" +
-  "can be found [here](https://github.com/pratik227/quasar-qhierarchy/tree/master/demo).\n" +
+  "can be found [here](https://quasar-draggable-tree.netlify.com/examples).\n" +
   "\n" +
-  "#### Support\n" +
-  "If this helped you in any way, you can contribute to this project for long term survival by supporting me:\n" +
-
-  "###### [💜 Support my open-source work on GitHub](https://github.com/sponsors/pratik227)\n" +
+  "# Demo Project.\n" +
   "\n" +
-  "Be sure to check out my sponsor page.\n" +
+  "can be found [here](https://github.com/mayank091193/quasar-draggable-tree/tree/master/demo).\n" +
   "\n" +
-  "(GitHub currently **doubles your support**! So if you support me with $10/mo, I will get $20 instead! They're alchemists 😉)\n" +
+  "# Roadmap\n" +
   "\n" +
-  "Thank you so much!!!\n"
+  "Default Expansion"
 
 export default defineComponent({
   name: 'PageIndex',
@@ -325,18 +182,27 @@ export default defineComponent({
       dense: ref(false),
       dark: ref(true),
       default_expand_all: ref(true),
-      columns,
-      data,
       path,
-      title: 'What is QHierarchy',
+      title: 'What is QDraggableTree',
       year,
       json,
       md_data: '',
       source: mds_data,
-      mdiCharity
+      mdiCharity,
+      markdown
     }
   },
   created() {
+    var client = new XMLHttpRequest();
+    client.open('GET', '/qdraggabletree.md');
+    let self = this;
+    client.onreadystatechange = function () {
+      self.markdown = client.responseText;
+    }
+
+    client.send();
+    console.log(this.markdown)
+
   }
 })
 </script>

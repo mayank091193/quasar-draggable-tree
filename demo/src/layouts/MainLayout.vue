@@ -93,7 +93,7 @@
         >
           <q-card class="bg-transparent">
             <q-item class="text-primary q-ml-md" type="a"
-                    @click="openLink('https://github.com/pratik227/quasar-qhierarchy')" dense clickable>
+                    @click="openLink('https://github.com/mayank091193/quasar-draggable-tree')" dense clickable>
               <q-item-section>
                 Github
               </q-item-section>
@@ -101,7 +101,7 @@
                 <q-btn type="a" rounded dense size="md" icon="fab fa-github" flat color="primary"></q-btn>
               </q-item-section>
             </q-item>
-            <q-item class="text-primary q-ml-md" type="a" @click="openLink('https://twitter.com/pratikPatel_227')" dense
+            <q-item class="text-primary q-ml-md" type="a" @click="openLink('https://twitter.com/mayank91193')" dense
                     clickable>
               <q-item-section>
                 Twitter
@@ -124,7 +124,7 @@
       <q-toolbar>
         <div class="full-width text-center">This documentation site for QDraggableTree is a work in progress. If you see
           something missing or inaccurate, please create a PR on the
-          <markdown-link to="https://github.com/pratik227/quasar-qhierarchy" style="color: white;">GitHub repo
+          <markdown-link to="https://github.com/mayank091193/quasar-draggable-tree" style="color: white;">GitHub repo
           </markdown-link>
           .
         </div>

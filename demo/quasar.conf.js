@@ -23,7 +23,8 @@ module.exports = configure(function (ctx) {
     // https://v2.quasar.dev/quasar-cli/boot-files
     boot: [
       'register.js',
-      'axios'
+      'axios',
+      'markdown'
     ],
 
     // https://v2.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
@@ -68,6 +69,15 @@ module.exports = configure(function (ctx) {
 
       // https://v2.quasar.dev/quasar-cli/handling-webpack
       // "chain" is a webpack-chain object https://github.com/neutrinojs/webpack-chain
+
+      extendWebpack (cfg, { isServer, isClient }) {
+        cfg.resolve.alias = {
+          ...cfg.resolve.alias, // This adds the existing alias
+
+          // Add your own alias like this
+         'vue$': path.resolve(__dirname, 'node_modules/vue/dist/vue.runtime.esm-bundler.js'),
+        }
+      },
       chainWebpack (chain) {
 
         chain.resolve.alias.merge({
@@ -86,6 +96,7 @@ module.exports = configure(function (ctx) {
             productionMode: ctx.prod === true,
             compilerOptions: {
               preserveWhitespace: false
+
             },
             transformAssetUrls: {
               video: 'src',

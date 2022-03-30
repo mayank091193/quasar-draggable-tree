@@ -15,103 +15,47 @@
           </div>
         </q-card-section>
         <q-card-section>
-          My name is Pratik Patel (also known as <a
-          href="https://twitter.com/pratikPatel_227"
-          target="_blank"
-          class="markdown-link"
-        >
-          @pratik227
-        </a>). I noticed myself pulling into programming since 2013, and
-          then determined myself to become a skilled and knowledgeable programmer. I started my career by working with
-          HTML5, CSS3, AngularJS, Vue.js, Elasticsearch, and Python and eventually introduced myself with
-          Quasar-Framework. After getting hands-on experience on Quasar-Framework for 2 years, I got heavily involved in
-          creating plugins for Quasar Framework such as QHierarchy-Quasar App Extension.
-
-          <br/>
-          <br/>
-          I have also written some of the articles on Quasar Framework and many more open source projects. You may have
-          heard of some of my articles:
-
-          <br/>
-
-          <li class="q-mt-sm">Adding Charts in Quasar</li>
-          <li>Adding Charts in Quasar using UMD (Unified Module Definition)</li>
-          <li>Dashboard using Quasar and ECharts</li>
-          <li>Adding Charts in Quasar</li>
-          <li>
-            <a
-              href="https://github.com/pratik227/quasar-qhierarchy"
-              target="_blank"
-              class="markdown-link"
-            >
-              QHierarchy
-            </a>
-          </li>
-          <li>
-            <a
-              href="https://github.com/pratik227/quasar-qgrid"
-              target="_blank"
-              class="markdown-link"
-            >
-              QGrid
-            </a>
-
-          </li>
-          <li>
-            <a
-              href="https://github.com/pratik227/quasar-admin"
-              target="_blank"
-              class="markdown-link"
-            >
-              Quasar Admin
-            </a></li>
-          <li>
-            <a
-              href="https://github.com/pratik227/quasar-gaming"
-              target="_blank"
-              class="markdown-link"
-            >
-              Quasar Gaming
-            </a></li>
-          <li>
-            <a
-              href="https://github.com/pratik227/quasar-echarts"
-              target="_blank"
-              class="markdown-link"
-            >
-              Quasar Echarts
-            </a></li>
-
-          <br/>
-
-
-          <div class="q-mt-sm">
-            Also, I do believe in Free or Open Source Software (FOSS) because sharing of knowledge makes the world a
-            better place to live in. Also, for sustaining in the market, there are several ways to sustain FOSS.
+          <div>I am Mayank Patel (Known as mayank091193). I am in the programming field since 2011. I always wanted to
+            become
+            a skilled programmer. My passion to become a full-stack developer increases as I started working at my first
+            job in Vadodara, Gujarat.
           </div>
-
-          <ol class="q-mt-sm">
-            <li>Financial backing</li>
-            <li>Contributing
-              <ol type="a">
-                <li>
-                  Reporting bugs
-                </li>
-                <li>
-                  Requesting features
-                </li>
-                <li>
-                  Fixing bugs
-                </li>
-                <li>
-                  Adding features
-                </li>
-                <li>
-                  Community involvement
-                </li>
-              </ol>
-            </li>
-          </ol>
+          <br/>
+          <div>
+            I started my career with HTML/CSS as the front-end and ASP.NET C#. In the initial stage, I was working on 3
+            tier architecture that our company had built. Later we had implemented ASP.NET MVC Architecture. Later after
+            2
+            years, I have decided to move to another company to get myself challenges and learn more. In my second
+            company, I started working on HTML/Bootstrap/AngularJS as the front-end and Python as the back-end language.
+          </div>
+          <br/>
+          <div>
+            In this phase, I have learned many technologies. I got many projects to work on. The major project includes
+            the Sales reporting system, CRM system, AWS based data warehouse solution and many more. Eventually, I
+            introduced myself to Quasar-Framework and Vue.js. After getting hands-on experience on Quasar-Framework for
+            2
+            years, I got involved in creating some plugins for Quasar Framework such as QDraggableHierarchy App
+            Extension.
+          </div>
+          <br/>
+          <div>
+            Also, I do believe in Free or Open Source Software (FOSS) because I believe "Knowledge management doesn’t
+            happen until somebody reuses something". I am currently heavily involved in creating open source templates.
+            You may have heard of some of my open-source resources:
+          </div>
+          <br/>
+          <div>
+            Quasar CRM Admin
+            Quasar Scrum
+            Quasar draggable tree (QDraggableTree)
+            CoolTab chrome extension
+          </div>
+          I believe for sustaining in the market, you need to keep yourself updated with knowledge. Solution matters
+          technology doesn't.
+          <br/><br/>
+          Stay tuned for more.
+          <br/><br/>
+          Thank you very much!
         </q-card-section>
       </q-card>
 
@@ -138,7 +82,7 @@ export default defineComponent({
       }
     }
   },
-  components:{
+  components: {
     PageFooter: defineAsyncComponent(() => import('components/PageFooter')),
   }
 })

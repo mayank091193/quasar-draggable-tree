@@ -6,15 +6,11 @@
 <script>
 import {defineComponent} from 'vue';
 import {ref} from 'vue';
-// import {QDraggableTree}  from 'quasar-ui-qdraggabletree'
 
 export default defineComponent({
   name: "Basic",
 
-  // components: {
-  //   QDraggableTree
-  // },
-  data() {
+  setup() {
     return {
       data: ref([
         {
