@@ -153,15 +153,15 @@ let mds_data = "# QDraggableTree\n" +
   "\n" +
   "# Docs\n" +
   "\n" +
-  "can be found [here](https://quasar-draggable-tree.netlify.com).\n" +
+  "can be found [here](https://next-quasar-draggable-tree.netlify.com).\n" +
   "\n" +
   "# Examples\n" +
   "\n" +
-  "can be found [here](https://quasar-draggable-tree.netlify.com/examples).\n" +
+  "can be found [here](https://next-quasar-draggable-tree.netlify.com).\n" +
   "\n" +
   "# Demo Project.\n" +
   "\n" +
-  "can be found [here](https://github.com/mayank091193/quasar-draggable-tree/tree/master/demo).\n" +
+  "can be found [here](https://github.com/mayank091193/quasar-draggable-tree/tree/next/demo).\n" +
   "\n" +
   "# Roadmap\n" +
   "\n" +
