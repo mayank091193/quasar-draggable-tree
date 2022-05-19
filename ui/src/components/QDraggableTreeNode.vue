@@ -47,6 +47,7 @@
       </div>
       <div v-else class="q-tree__children">
         <draggable
+            item-key="name"
             :list="value.children"
             ghost-class="ghost"
             @input="updateValue"
