@@ -1,6 +1,6 @@
 {
   "name": "quasar-app-extension-qdraggabletree",
-  "version": "2.0.4",
+  "version": "2.0.6",
   "description": "A Quasar App Extension",
   "author": "mayank091193@gmail.com",
   "license": "MIT",
@@ -12,7 +12,7 @@
   "bugs": "",
   "homepage": "",
   "dependencies": {
-    "quasar-ui-qdraggabletree": "latest"
+    "quasar-ui-qdraggabletree": "1.0.9"
   },
   "engines": {
     "node": ">= 8.9.0",

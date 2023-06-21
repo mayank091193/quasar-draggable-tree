@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import Draggable from "vuedraggable";
+import Draggable from "zhyswan-vuedraggable";
 import QDraggableTreeNode from "./QDraggableTreeNode.vue";
 
 import {defineComponent} from 'vue';

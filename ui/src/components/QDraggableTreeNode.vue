@@ -65,7 +65,7 @@
   </div>
 </template>
 <script>
-import draggable from "vuedraggable";
+import draggable from "zhyswan-vuedraggable";
 
 import {defineComponent} from 'vue';
 import {ref} from 'vue';
