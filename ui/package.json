@@ -1,6 +1,6 @@
 {
   "name": "quasar-ui-qdraggabletree",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "mayank091193@gmail.com",
   "description": "Quasar Draggable Tree with Vue 3!",
   "license": "MIT",
@@ -50,6 +50,6 @@
     "last 4 iOS versions"
   ],
   "dependencies": {
-    "vuedraggable": "^4.1.0"
+    "vue-draggable-next": "^2.2.1"
   }
 }

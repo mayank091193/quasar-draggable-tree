@@ -15,7 +15,6 @@
 </template>
 
 <script>
-import Draggable from "vuedraggable";
 import QDraggableTreeNode from "./QDraggableTreeNode.vue";
 
 import {defineComponent} from 'vue';
@@ -23,7 +22,6 @@ import {ref} from 'vue';
 
 export default defineComponent({
   components: {
-    Draggable,
     QDraggableTreeNode
   },
   props: {

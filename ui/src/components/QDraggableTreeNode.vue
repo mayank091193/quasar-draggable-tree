@@ -25,24 +25,21 @@
             @start="drag = true"
             @end="drag = false"
         >
-          <template #item="{ element }">
-            <div class="list-group-item">
-              <q-draggable-tree-node
-                  :value="element"
-                  @input="updateChildValue"
-                  :group="group"
-                  :rowKey="rowKey"
-              >
-                <template #left="{ item:element, open }">
-                  <slot name="left" v-bind="{ item:element, open }"></slot>
-                </template>
-                <template v-if="hasDefaultSlot" #body="{ item:element, open }">
-                  <slot name="body" v-bind="{ item:element, open }"></slot>
-                </template>
-                <span v-if="!hasDefaultSlot">{{ element.label }}</span>
-              </q-draggable-tree-node>
-            </div>
-          </template>
+          <q-draggable-tree-node v-for="(item,index) in value.children"
+                                 :key="index"
+                                 :value="item"
+                                 @input="updateChildValue"
+                                 :group="group"
+                                 :rowKey="rowKey"
+          >
+            <template #left="{ item:element, open }">
+              <slot name="left" v-bind="{ item:element, open }"></slot>
+            </template>
+            <template v-if="hasDefaultSlot" #body="{ item:element, open }">
+              <slot name="body" v-bind="{ item:element, open }"></slot>
+            </template>
+            <span v-if="!hasDefaultSlot">{{ item.label }}</span>
+          </q-draggable-tree-node>
         </draggable>
       </div>
       <div v-else class="q-tree__children">
@@ -56,16 +53,13 @@
             @start="drag = true"
             @end="drag = false"
         >
-          <template #item="{ element }">
-            <div></div>
-          </template>
         </draggable>
       </div>
     </div>
   </div>
 </template>
 <script>
-import draggable from "vuedraggable";
+import {VueDraggableNext} from "vue-draggable-next";
 
 import {defineComponent} from 'vue';
 import {ref} from 'vue';
@@ -73,7 +67,7 @@ import {ref} from 'vue';
 export default defineComponent({
   name: "QDraggableTreeNode",
   components: {
-    draggable
+    draggable: VueDraggableNext,
   },
   props: {
     value: {
